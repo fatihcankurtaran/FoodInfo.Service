@@ -14,7 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using FoodInfo.Service.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Server.HttpSys;
-
+using AutoMapper;
+using FoodInfo.Service.DTOs;
 
 namespace FoodInfo.Service
 {
@@ -23,6 +24,31 @@ namespace FoodInfo.Service
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Mapper.Initialize((cfg => {
+                 cfg.CreateMap<User, UserDTO>();
+                 cfg.CreateMap<UserDTO, User>();
+                cfg.CreateMap<ModeratorDTO, User>();
+                cfg.CreateMap<AdminDTO, User>();
+                cfg.CreateMap<ErrorDTO, Error>();
+                cfg.CreateMap<Error, ErrorDTO>();
+                cfg.CreateMap<LanguageDTO, Language>();
+                cfg.CreateMap<CategoryNameDTO, ProductCategory>();
+                cfg.CreateMap<ProductCategory, CategoryNameDTO>();
+                cfg.CreateMap<ProductContent, ContentDTO>();
+                cfg.CreateMap<ContentDTO, ProductContent>();
+                cfg.CreateMap<ContentDTO, Comment>();
+                cfg.CreateMap<CommentDTO, Comment>();
+                cfg.CreateMap<ContentDTO, Vote>();
+                cfg.CreateMap<Product, ProductDTO>();
+                cfg.CreateMap<ProductCategory, ProductCategoryDTO>();
+                cfg.CreateMap<ProductCategoryDTO, ProductCategory>();
+                cfg.CreateMap<SearchByNameDTO, Product>();
+                cfg.CreateMap<Product, SearchByNameDTO>();  
+;                
+
+
+            } ));
+           
 
         }
 
@@ -35,7 +61,7 @@ namespace FoodInfo.Service
             services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
 
 
-            var connection = @"Server=18.191.129.27; Database=FoodInforService; User Id=fiservice;assword=foodinfoservice;ConnectRetryCount=0";
+           // var connection = @"Server=18.191.129.27; Database=FoodInforService; User Id=fiservice;assword=foodinfoservice;ConnectRetryCount=0";
 
             services.AddDbContext<FoodInfoServiceContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("FoodInfoServiceContext")));

@@ -9,10 +9,12 @@ namespace FoodInfo.Service.Models
     public class Language : Base
     {
         public int ID { get; set; }
-        public string CountryCode { get; set; }
-        public string CountryName { get; set; }
+        public string LanguageCode { get; set; }
+        public string LanguageName { get; set; }
+        public string NativeLanguageName { get; set; }
         //
-        public ICollection<ProductLanguage> ProductLanguages { get; set; }
+        //public ICollection<ProductContent> ProductContents { get; set; }
 
+        
     }
 }

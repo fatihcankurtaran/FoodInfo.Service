@@ -20,40 +20,74 @@ namespace FoodInfo.Service.Models
         public DbSet<User> User { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<ProductLanguage> ProductLanguages { get; set; }
         public DbSet<Language> Languages { get; set; }
-        
+        public DbSet<NutritionFacts> NutritionFacts { get; set; }
+        public DbSet<ProductContent> ProductContents { get; set; }
+        public DbSet<Error> Errors { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Vote> Votes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=185.225.37.199; Database=FoodInforService; User Id=fiservice;Password=foodinfoservice;");
+                optionsBuilder.UseSqlServer(@"Server=13.59.157.144; Database=FoodInfoService; User Id=fiservice;Password=foodinfoservice;");
+             // optionsBuilder.UseSqlServer(@"Server=localhost; Database=FoodInforService; Integrated Security=True;");
 
 
             }
 
-        }
+        }   
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-                .HasData(new User { ID = 1, Name = "Fatih", Surname = "Cankurtaran" ,Email="f@gmail.com", Username= "fatih",Password ="123"},
-                        new User { ID = 2, Name = "Yusuf", Surname = "Kocadas" , Email ="y@gmail.com",Username="yusuf", Password = "123" }
+                .HasData(new User { ID = 1, Name = "Fatih", Surname = "Cankurtaran" ,Email="f@gmail.com", Username= "fatih",Password = "b41af4c157c87c6c8278ec45127c235fb5c991288e6a07da88b87549076acf02" },
+                        new User { ID = 2, Name = "Yusuf", Surname = "Kocadas" , Email ="y@gmail.com",Username="yusuf", Password = "b41af4c157c87c6c8278ec45127c235fb5c991288e6a07da88b87549076acf02" }
                 );
 
+
+            
             /// This one will be used for setting properties.
             //modelBuilder.Entity<User>()
             //    .Property(b => b.Name)
             //    .IsRequired(true);
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.ProductLanguages);
+            
 
 
-            modelBuilder.Entity<ProductCategory>()
-                .HasMany(p => p.Products);
+            //modelBuilder.Entity<ProductCategory>()
+            //    .HasMany(p => p.Products);
 
-            modelBuilder.Entity<Language>()
-                .HasMany(p => p.ProductLanguages);
+            //modelBuilder.Entity<Error>()
+            //    .HasData(
+            //#region SysError    
+
+            //    new Error { ID = 1, ErrorCode = "SYS001", ErrorMessage = "An internal error occurred. Please try again later." },
+
+            //#endregion
+
+            //#region UsrError
+            //      new Error
+            //      {
+            //          ID = 2,
+            //          ErrorCode = "USR001",
+            //          ErrorMessage = "User can not found."
+            //      },
+            //#endregion
+            //#region LngError
+
+            //#endregion
+
+            //#region LgnError
+
+            //      new Error { ID = 3,
+            //          ErrorCode = "LGN001",
+            //          ErrorMessage = "Username or Email already exist."
+            //      }
+
+            //#endregion
+
+            //    ); 
+
             
         }
 

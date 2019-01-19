@@ -19,19 +19,46 @@ namespace FoodInfo.Service.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FoodInfo.Service.Models.Language", b =>
+            modelBuilder.Entity("FoodInfo.Service.Models.Comment", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CountryCode");
+                    b.Property<DateTime>("CreatedDate");
 
-                    b.Property<string>("CountryName");
+                    b.Property<int?>("CreatedUserId");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int?>("ModifiedUserId");
+
+                    b.Property<int?>("ProductContentID");
+
+                    b.Property<string>("UserComment");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductContentID");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.Error", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<int?>("CreatedUserId");
+
+                    b.Property<string>("ErrorCode");
+
+                    b.Property<string>("ErrorMessage");
 
                     b.Property<bool>("IsDeleted");
 
@@ -41,7 +68,75 @@ namespace FoodInfo.Service.Migrations
 
                     b.HasKey("ID");
 
+                    b.ToTable("Errors");
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.Language", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<int?>("CreatedUserId");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("LanguageCode");
+
+                    b.Property<string>("LanguageName");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int?>("ModifiedUserId");
+
+                    b.Property<string>("NativeLanguageName");
+
+                    b.HasKey("ID");
+
                     b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.NutritionFacts", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BarcodeId");
+
+                    b.Property<decimal?>("Carbohydrate");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<int?>("CreatedUserId");
+
+                    b.Property<decimal?>("Energy");
+
+                    b.Property<decimal?>("Fat");
+
+                    b.Property<decimal?>("Fiber");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<string>("LanguageCode");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int?>("ModifiedUserId");
+
+                    b.Property<decimal?>("Protein");
+
+                    b.Property<decimal?>("Salt");
+
+                    b.Property<decimal?>("SaturatedFattyAcids");
+
+                    b.Property<decimal?>("TransFattyAcids");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("NutritionFacts");
                 });
 
             modelBuilder.Entity("FoodInfo.Service.Models.Product", b =>
@@ -50,11 +145,14 @@ namespace FoodInfo.Service.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BarkodId");
+                    b.Property<string>("BarcodeId")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<int?>("CreatedUserId");
+
+                    b.Property<byte[]>("FirstImage");
 
                     b.Property<bool>("IsDeleted");
 
@@ -64,11 +162,13 @@ namespace FoodInfo.Service.Migrations
 
                     b.Property<int?>("ProductCategoryID");
 
-                    b.Property<int>("ProductGroupId");
+                    b.Property<int?>("ProductGroupId");
 
                     b.Property<string>("ProductName");
 
-                    b.Property<string>("ProductPicturePath");
+                    b.Property<byte[]>("SecondImage");
+
+                    b.Property<byte[]>("ThirdImage");
 
                     b.HasKey("ID");
 
@@ -91,6 +191,8 @@ namespace FoodInfo.Service.Migrations
 
                     b.Property<bool>("IsDeleted");
 
+                    b.Property<string>("LanguageCode");
+
                     b.Property<DateTime?>("ModifiedDate");
 
                     b.Property<int?>("ModifiedUserId");
@@ -100,15 +202,21 @@ namespace FoodInfo.Service.Migrations
                     b.ToTable("ProductCategories");
                 });
 
-            modelBuilder.Entity("FoodInfo.Service.Models.ProductLanguage", b =>
+            modelBuilder.Entity("FoodInfo.Service.Models.ProductContent", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CookingTips");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<int?>("CreatedUserId");
+
+                    b.Property<string>("Details");
+
+                    b.Property<string>("Ingredients");
 
                     b.Property<bool>("IsDeleted");
 
@@ -118,15 +226,25 @@ namespace FoodInfo.Service.Migrations
 
                     b.Property<int?>("ModifiedUserId");
 
+                    b.Property<int?>("NutritionFactID");
+
                     b.Property<int?>("ProductID");
+
+                    b.Property<string>("Recommendations");
+
+                    b.Property<string>("VideoURL");
+
+                    b.Property<string>("Warnings");
 
                     b.HasKey("ID");
 
                     b.HasIndex("LanguageID");
 
+                    b.HasIndex("NutritionFactID");
+
                     b.HasIndex("ProductID");
 
-                    b.ToTable("ProductLanguages");
+                    b.ToTable("ProductContents");
                 });
 
             modelBuilder.Entity("FoodInfo.Service.Models.User", b =>
@@ -139,9 +257,14 @@ namespace FoodInfo.Service.Migrations
 
                     b.Property<int?>("CreatedUserId");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<bool>("IsAdmin");
 
                     b.Property<bool>("IsDeleted");
+
+                    b.Property<bool>("IsModerator");
 
                     b.Property<DateTime?>("ModifiedDate");
 
@@ -149,37 +272,84 @@ namespace FoodInfo.Service.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Password")
+                        .IsRequired();
 
                     b.Property<string>("Surname");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("Username")
+                        .IsRequired();
 
                     b.HasKey("ID");
 
                     b.ToTable("User");
 
                     b.HasData(
-                        new { ID = 1, CreatedDate = new DateTime(2018, 10, 26, 19, 59, 27, 856, DateTimeKind.Local), IsDeleted = false, Name = "Fatih", Surname = "Cankurtaran" },
-                        new { ID = 2, CreatedDate = new DateTime(2018, 10, 26, 19, 59, 27, 858, DateTimeKind.Local), IsDeleted = false, Name = "Yusuf", Surname = "Kocadas" }
+                        new { ID = 1, CreatedDate = new DateTime(2019, 1, 11, 16, 32, 54, 41, DateTimeKind.Local), Email = "f@gmail.com", IsAdmin = false, IsDeleted = false, IsModerator = false, Name = "Fatih", Password = "b41af4c157c87c6c8278ec45127c235fb5c991288e6a07da88b87549076acf02", Surname = "Cankurtaran", Username = "fatih" },
+                        new { ID = 2, CreatedDate = new DateTime(2019, 1, 11, 16, 32, 54, 44, DateTimeKind.Local), Email = "y@gmail.com", IsAdmin = false, IsDeleted = false, IsModerator = false, Name = "Yusuf", Password = "b41af4c157c87c6c8278ec45127c235fb5c991288e6a07da88b87549076acf02", Surname = "Kocadas", Username = "yusuf" }
                     );
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.Vote", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<int?>("CreatedUserId");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.Property<int?>("ModifiedUserId");
+
+                    b.Property<int?>("ProductID");
+
+                    b.Property<int?>("UserVote");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("Votes");
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.Comment", b =>
+                {
+                    b.HasOne("FoodInfo.Service.Models.ProductContent", "ProductContent")
+                        .WithMany()
+                        .HasForeignKey("ProductContentID");
                 });
 
             modelBuilder.Entity("FoodInfo.Service.Models.Product", b =>
                 {
                     b.HasOne("FoodInfo.Service.Models.ProductCategory", "ProductCategory")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("ProductCategoryID");
                 });
 
-            modelBuilder.Entity("FoodInfo.Service.Models.ProductLanguage", b =>
+            modelBuilder.Entity("FoodInfo.Service.Models.ProductContent", b =>
                 {
                     b.HasOne("FoodInfo.Service.Models.Language", "Language")
-                        .WithMany("ProductLanguages")
+                        .WithMany()
                         .HasForeignKey("LanguageID");
 
+                    b.HasOne("FoodInfo.Service.Models.NutritionFacts", "NutritionFact")
+                        .WithMany()
+                        .HasForeignKey("NutritionFactID");
+
                     b.HasOne("FoodInfo.Service.Models.Product", "Product")
-                        .WithMany("ProductLanguages")
+                        .WithMany()
+                        .HasForeignKey("ProductID");
+                });
+
+            modelBuilder.Entity("FoodInfo.Service.Models.Vote", b =>
+                {
+                    b.HasOne("FoodInfo.Service.Models.Product", "Product")
+                        .WithMany()
                         .HasForeignKey("ProductID");
                 });
 #pragma warning restore 612, 618
