@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/IMGShowMain"
+            android:layout_width="270dp"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add96" />
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/IMGShow1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/add96" />
+
+            <ImageView
+                android:id="@+id/IMGShow2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/add96" />
+
+            <ImageView
+                android:id="@+id/IMGShow3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/add96" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/darker_gray" />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@color/colorPrimary"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/txProductName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="8"
+                    android:text="@string/product_name_nutella_product_categori" />
+
+                <lecho.lib.hellocharts.view.PieChartView
+                    android:id="@+id/chart"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+            <!-- everything you already have -->
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txRate"
+                        android:text="@string/_0_00"
+                        android:ems="3"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="23sp"
+                        />
+                    <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/Rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:layout_gravity="center"
+                        android:isIndicator="true"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:id="@+id/txIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="8"
+                    android:text="@string/hello_blank_fragment"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="8"
+                android:text="@string/hello_blank_fragment" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@android:color/darker_gray"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:id="@+id/CommentLayout"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/commentsbaslık"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comments"
+                    android:clickable="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    />
+
+
+                <EditText
+                    android:id="@+id/txComment"
+                    android:layout_width="250dp"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:hint="@string/send_comment_here"
+
+                    />
+                <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/Rate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"/>
+                <Button
+                    android:id="@+id/btnComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/send" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:src="@android:color/darker_gray"
+                    />
+
+                <Components.NestedListView
+                    android:id="@+id/listcomment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    >
+
+
+                </Components.NestedListView>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

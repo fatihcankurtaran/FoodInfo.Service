@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF8D2D</color>
+    <color name="colorPrimaryDark">#060845</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteTransparent">#80ffffff</color>
+    <color name="moonstoone">#3aa8c1</color>
+    <color name="hatarengi">#c42727</color>
+
+    <color name="siyah">#4d4b4b</color>
+
+
+    <color name="protein">#ff0000</color>
+
+
+
+
+</resources>

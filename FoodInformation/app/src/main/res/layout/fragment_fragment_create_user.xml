@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:weightSum="4">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add96"
+            />
+        <TextView
+            android:id="@+id/txStatusCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rnek_hata"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/txtName"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_margin="4dp"
+                android:inputType="textPersonName"
+                android:hint="@string/name" />
+
+            <EditText
+                android:id="@+id/txtSurName"
+                android:layout_width="120dp"
+                android:layout_margin="4dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/surname" />
+
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/e_mail" />
+
+        <EditText
+            android:id="@+id/txtID"
+            android:layout_width="250dp"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/id" />
+
+        <EditText
+            android:id="@+id/txtPW"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="11dp"
+            >
+            <EditText
+                android:id="@+id/txtPW2"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="@string/password" />
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imgTick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/check_icon"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="4dp"
+            android:textSize="13sp"
+            android:text="@string/create_account" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
